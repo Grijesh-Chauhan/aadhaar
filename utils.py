@@ -22,7 +22,9 @@ def parse_query_paras(url, flat=True):
             parsed_paras[key] = value[0] if len(value) == 1 else value
     return parsed_paras
 
+
 def add_url_params(url, params):
+    # borrowed from https://stackoverflow.com/a/25580545/1673391
     """ Add GET params to provided URL being aware of existing.
 
     :param url: string of target URL
