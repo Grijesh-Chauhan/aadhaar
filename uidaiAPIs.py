@@ -110,8 +110,7 @@ class AdharVerificationAPI(CaptchaGetAPI):
     def get_hidden_data(self):
         beautiful_html = self.webget(self.get_url('get'))
         form = beautiful_html.find('form', { 'id': '_aadhaarverification_WAR_AadhaarVerificationportlet_AadhaarVerificationForm' })
-        action = next(v for n, v in form.attrs if n == 'action')
-        self._params = parse_query_paras(action)
+        self._params = parse_query_paras(form['action'])
         inputs = { input.get('name') or "": input.get('value') or "" 
                    for input in form.findAll('input') 
                  }
